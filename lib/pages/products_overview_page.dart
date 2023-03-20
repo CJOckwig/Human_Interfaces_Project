@@ -1,12 +1,10 @@
-
-
-
 // pages/products_overview_page.dart
 
 import 'package:flutter/material.dart';
 
 import '../data/temp_data.dart';
 import '../widgets/product_item.dart';
+import '../pages/cart_page.dart';
 
 class ProductsOverviewPage extends StatelessWidget {
   const ProductsOverviewPage({super.key});
@@ -17,7 +15,27 @@ class ProductsOverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Shop'),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.home,
+          ),
+          onPressed: () => Navigator.pushNamed(
+            context,
+            ProductsOverviewPage.routeName,
+          ),
+        ),
+        title: const Text('Antelope Coffee'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.shopping_cart,
+            ),
+            onPressed: () => Navigator.pushNamed(
+              context,
+              CartPage.routeName,
+            ),
+          ),
+        ],
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10.0),
@@ -37,5 +55,3 @@ class ProductsOverviewPage extends StatelessWidget {
     );
   }
 }
-
-
