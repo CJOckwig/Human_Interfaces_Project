@@ -2,7 +2,7 @@ import '../models/drink.dart';
 
 // All the drinks that can be sold
 Map drinks = {
-  "late": Drink(
+  "latte": Drink(
       name: "Late",
       imageUrl: "url",
       pricePerSize: {"small": 2.5, "medium": 2.7, "large": 2.9}),
