@@ -2,6 +2,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+//pages imports
+import '../pages/products_overview_page.dart';
+import '../pages/cart_page.dart';
+import '../providers/cust_provider.dart';
 import '../data/globals.dart';
 
 class CustomerInfoPage extends StatelessWidget {
@@ -11,17 +16,36 @@ class CustomerInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var selectedOption;
+    //final cust = Provider.of<Customer>(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Customer Information'),
-          backgroundColor: Globals.caribouBrown,
-          shadowColor: Globals.caribouLightGrey,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.home,
+            ),
+            onPressed: () => Navigator.pushNamed(
+              context,
+              ProductsOverviewPage.routeName,
+            ),
+          ),
+          title: const Text('Customer Info'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.shopping_cart,
+              ),
+              onPressed: () => Navigator.pushNamed(
+                context,
+                CartPage.routeName,
+              ),
+            ),
+          ],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Padding(padding: EdgeInsets.all(5)),
+            Padding(padding: EdgeInsets.all(15)),
             SizedBox(width: 16),
             Expanded(
               child: TextField(
