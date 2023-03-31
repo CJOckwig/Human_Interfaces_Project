@@ -14,8 +14,8 @@ class CustomerInfoPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Customer Information'),
-          backgroundColor: Globals.coffeeDarkBrown,
-          shadowColor: Globals.coffeeCream,
+          backgroundColor: Globals.caribouBrown,
+          shadowColor: Globals.caribouLightGrey,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -29,7 +29,7 @@ class CustomerInfoPage extends StatelessWidget {
                   labelText: 'First name',
                   border: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: Globals.coffeeDarkBrown, width: 2.0),
+                        BorderSide(color: Globals.caribouBrown, width: 2.0),
                   ),
                 ),
               ),
@@ -40,7 +40,7 @@ class CustomerInfoPage extends StatelessWidget {
                   labelText: 'Last name',
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
-                    color: Globals.coffeeDarkBrown,
+                    color: Globals.caribouBrown,
                     width: 2.0,
                   )),
                 ),
@@ -52,7 +52,7 @@ class CustomerInfoPage extends StatelessWidget {
                   labelText: 'Email',
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
-                    color: Globals.coffeeDarkBrown,
+                    color: Globals.caribouBrown,
                     width: 2.0,
                   )),
                 ),
@@ -64,7 +64,7 @@ class CustomerInfoPage extends StatelessWidget {
                   labelText: 'Phone Number',
                   border: OutlineInputBorder(
                       borderSide: BorderSide(
-                    color: Globals.coffeeDarkBrown,
+                    color: Globals.caribouBrown,
                     width: 2.0,
                   )),
                 ),
@@ -93,7 +93,7 @@ class CustomerInfoPage extends StatelessWidget {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Globals.coffeeDarkBrown),
+                        side: BorderSide(color: Globals.caribouBrown),
                       ),
                     ),
                   ),
