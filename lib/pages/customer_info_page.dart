@@ -112,31 +112,67 @@ class CustomerInfoPage extends StatelessWidget {
                   },
                   value: selectedOption,
                 ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.center,
+                Row(
                   children: [
-                    BackButton(
-                      onPressed: () {},
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pushNamed(
-                        context,
-                        PaymentInfoPage.routeName,
+                    // Continue Shopping Button
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              width: 3,
+                            ),
+                            foregroundColor:
+                                Theme.of(context).colorScheme.tertiary,
+                            backgroundColor: Colors.white,
+                            textStyle: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            ProductsOverviewPage.routeName,
+                          ),
+                          child: const Text('Continue Shopping'),
+                        ),
                       ),
-                      style: ButtonStyle(
-                        //foregroundColor: Globals.coffeeCream,
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Globals.caribouBrown),
+                    ),
+                    const SizedBox(width: 20),
+                    // Check Out Button
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.tertiary,
+                            textStyle: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            PaymentInfoPage.routeName,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text('Payment Information'),
+                              Icon(
+                                Icons.arrow_forward,
+                              )
+                            ],
                           ),
                         ),
                       ),
-                      child: Text('proceed to payment screen'),
                     ),
                   ],
-                )
+                ),
               ],
             )));
   }
