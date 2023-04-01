@@ -23,24 +23,15 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(5.0),
       child: GridTile(
         // no rounded corner support
         footer: GridTileBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.favorite),
-            color: Theme.of(context).colorScheme.secondary,
-          ),
           title: Text(
             title,
             textAlign: TextAlign.center,
-          ),
-          trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.shopping_cart),
-            color: Theme.of(context).colorScheme.secondary,
+
           ),
         ),
         child: GestureDetector(
@@ -48,12 +39,12 @@ class ProductItem extends StatelessWidget {
             Navigator.pushNamed(
               context,
               ProductDetailPage.routeName,
-              arguments: id,
-            );
+              arguments: id,            );
           },
           child: Image.network(
             imageUrl,
-            fit: BoxFit.cover,
+            fit: BoxFit.scaleDown,
+            
           ),
         ),
       ),

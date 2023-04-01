@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         routes: {
           ProductsOverviewPage.routeName: (context) =>
               const ProductsOverviewPage(),
-          ProductDetailPage.routeName: (context) => const ProductDetailPage(),
+          ProductDetailPage.routeName: (context) => ProductDetailPageFull(),
           CartPage.routeName: (context) => const CartPage(),
         },
       ),
