@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 //import 'package:provider/provider.dart';
 import '../pages/cart_page.dart';
-
+import '../pages/customer_info_page.dart';
 import '../data/globals.dart';
 import '../providers/cart_provider.dart';
 import '../pages/products_overview_page.dart';
@@ -20,6 +20,7 @@ class PaymentInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(
@@ -82,15 +83,7 @@ class PaymentInfoPage extends StatelessWidget {
                       decoration:
                           const InputDecoration(labelText: 'Address Line 1'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
-                    )),
-                Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: TextFormField(
-                      decoration:
-                          const InputDecoration(labelText: 'Address Line 2'),
-                      textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.streetAddress,
                     )),
                 Padding(
                     padding: EdgeInsets.all(15.0),
@@ -104,7 +97,7 @@ class PaymentInfoPage extends StatelessWidget {
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'City'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.name,
                     )),
                 Padding(
                     padding: EdgeInsets.all(15.0),
@@ -124,22 +117,65 @@ class PaymentInfoPage extends StatelessWidget {
                     )),
                 Row(
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back),
-                      onPressed: () => Navigator.pushNamed(
-                        context,
-                        PaymentInfoPage.routeName,
+                    // Continue Shopping Button
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              width: 3,
+                            ),
+                            foregroundColor:
+                                Theme.of(context).colorScheme.tertiary,
+                            backgroundColor: Colors.white,
+                            textStyle: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            CustomerInfoPage.routeName,
+                          ),
+                          child: const Text('Back'),
+                        ),
                       ),
                     ),
-                    const Spacer(),
-                    TextButton(
-                        onPressed: () => Navigator.pushNamed(
-                              context,
-                              PaymentInfoPage.routeName,
+                    const SizedBox(width: 20),
+                    // Check Out Button
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.tertiary,
+                            textStyle: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
                             ),
-                        child: const Text('Purchase')),
+                          ),
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            PaymentInfoPage.routeName,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text('Submit Payment'),
+                              Icon(
+                                Icons.arrow_forward,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
-                )
+                ),
               ]),
         ));
   }

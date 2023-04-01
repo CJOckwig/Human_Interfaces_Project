@@ -34,7 +34,6 @@ class CustomerInfoPage extends StatelessWidget {
               ProductsOverviewPage.routeName,
             ),
           ),
-
           title: const Text('Customer Information'),
           actions: <Widget>[
             IconButton(
@@ -48,94 +47,97 @@ class CustomerInfoPage extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(padding: EdgeInsets.all(15)),
-            SizedBox(width: 16),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'First name',
-                  border: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Globals.caribouBrown, width: 2.0),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Last name',
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Globals.caribouBrown,
-                    width: 2.0,
-                  )),
-                ),
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Globals.caribouBrown,
-                    width: 2.0,
-                  )),
-                ),
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Globals.caribouBrown,
-                    width: 2.0,
-                  )),
-                ),
-              ),
-            ),
-            DropdownButton(
-              items: const [
-                DropdownMenuItem(value: 1, child: Text('Brookings')),
-                DropdownMenuItem(value: 2, child: Text('Sioux Falls')),
-              ],
-              onChanged: (selectedOption) {
-                selectedOption = selectedOption;
-              },
-              value: selectedOption,
-            ),
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
+        body: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                BackButton(
-                  onPressed: () {},
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    PaymentInfoPage.routeName,
-                  ),
-                  style: ButtonStyle(
-                    //foregroundColor: Globals.coffeeCream,
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Globals.caribouBrown),
+                Padding(padding: EdgeInsets.all(15)),
+                SizedBox(width: 16),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'First name',
+                      border: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Globals.caribouBrown, width: 2.0),
                       ),
                     ),
                   ),
-                  child: Text('proceed to payment screen'),
                 ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Last name',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Globals.caribouBrown,
+                        width: 2.0,
+                      )),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Globals.caribouBrown,
+                        width: 2.0,
+                      )),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Globals.caribouBrown,
+                        width: 2.0,
+                      )),
+                    ),
+                  ),
+                ),
+                DropdownButton(
+                  items: [
+                    DropdownMenuItem(value: 1, child: Text('Brookings')),
+                    DropdownMenuItem(value: 2, child: Text('Sioux Falls')),
+                  ],
+                  onChanged: (selectedOption) {
+                    selectedOption = selectedOption;
+                  },
+                  value: selectedOption,
+                ),
+                ButtonBar(
+                  alignment: MainAxisAlignment.center,
+                  children: [
+                    BackButton(
+                      onPressed: () {},
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        PaymentInfoPage.routeName,
+                      ),
+                      style: ButtonStyle(
+                        //foregroundColor: Globals.coffeeCream,
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(color: Globals.caribouBrown),
+                          ),
+                        ),
+                      ),
+                      child: Text('proceed to payment screen'),
+                    ),
+                  ],
+                )
               ],
-            )
-          ],
-        ));
+            )));
   }
 }
