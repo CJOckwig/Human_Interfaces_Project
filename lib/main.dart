@@ -44,13 +44,12 @@ class MyApp extends StatelessWidget {
           canvasColor: Globals.caribouLightGrey,
         ),
         // home: const ProductsOverviewPage(),
-        initialRoute: PaymentInfoPage.routeName,
+        initialRoute: ProductsOverviewPage.routeName,
         routes: {
           ProductsOverviewPage.routeName: (context) =>
               const ProductsOverviewPage(),
           ProductDetailPage.routeName: (context) => const ProductDetailPage(),
           CartPage.routeName: (context) => const CartPage(),
-
           CustomerInfoPage.routeName: (context) => const CustomerInfoPage(),
           PaymentInfoPage.routeName: (context) => const PaymentInfoPage(),
         },
