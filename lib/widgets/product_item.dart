@@ -1,10 +1,11 @@
-
-
 // widgets/product_item.dart
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../pages/product_detail_page.dart';
+import '../providers/cart_provider.dart';
+import '../pages/cart_page.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
@@ -22,6 +23,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
       child: GridTile(
@@ -37,8 +39,18 @@ class ProductItem extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
           ),
+          // trailing button as it was before
+          // trailing: IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.shopping_cart),
+          //   color: Theme.of(context).colorScheme.secondary,
+          // ),
+          // Cart button for adding a product to the cart, temporary use
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(DateTime.now().toString(), 'Mocha', 3.75);
+              Navigator.pushNamed(context, CartPage.routeName);
+            },
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).colorScheme.secondary,
           ),

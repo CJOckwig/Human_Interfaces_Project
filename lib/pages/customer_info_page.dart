@@ -4,18 +4,42 @@
 import 'package:flutter/material.dart';
 import '../data/globals.dart';
 
+// These two page imports are necessary for every page with an appBar
+import '../pages/cart_page.dart';
+import '../pages/products_overview_page.dart';
+
+import '../pages/payment_info_page.dart';
+
 class CustomerInfoPage extends StatelessWidget {
   const CustomerInfoPage({super.key});
-  static const String routeName = '/customer_info';
+  static const String routeName = './customer_info_page';
 
   @override
   Widget build(BuildContext context) {
     var selectedOption;
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.home,
+            ),
+            onPressed: () => Navigator.pushNamed(
+              context,
+              ProductsOverviewPage.routeName,
+            ),
+          ),
           title: const Text('Customer Information'),
-          backgroundColor: Globals.caribouBrown,
-          shadowColor: Globals.caribouLightGrey,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.shopping_cart,
+              ),
+              onPressed: () => Navigator.pushNamed(
+                context,
+                CartPage.routeName,
+              ),
+            ),
+          ],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -87,7 +111,10 @@ class CustomerInfoPage extends StatelessWidget {
                   onPressed: () {},
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    PaymentInfoPage.routeName,
+                  ),
                   style: ButtonStyle(
                     //foregroundColor: Globals.coffeeCream,
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
