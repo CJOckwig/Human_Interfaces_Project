@@ -9,9 +9,13 @@ import '../data/globals.dart';
 import '../providers/cart_provider.dart';
 import '../pages/products_overview_page.dart';
 
+// These two page imports are necessary for every page with an appBar
+import '../pages/cart_page.dart';
+import '../pages/products_overview_page.dart';
+
 class PaymentInfoPage extends StatelessWidget {
   const PaymentInfoPage({super.key});
-  static const String routeName = '/payment_info';
+  static const String routeName = '/payment_info_page';
 
   @override
   Widget build(BuildContext context) {

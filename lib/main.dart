@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_state/pages/customer_info_page.dart';
+
 import 'package:flutter_state/pages/payment_info_page.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ import './pages/product_detail_page.dart';
 import './pages/products_overview_page.dart';
 import './pages/cart_page.dart';
 import './pages/payment_info_page.dart';
+
 import './pages/customer_info_page.dart';
 import './providers/cart_provider.dart';
 
@@ -24,11 +26,20 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'My Shop',
         theme: ThemeData(
-          fontFamily: 'MinionPro',
+          fontFamily: 'FreeSans',
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Globals.caribouBrown,
-            primary: Globals.caribouBrown,
-            secondary: Globals.caribouBlue,
+            seedColor: Globals.caribouBlue,
+            primary: Globals.caribouBlue,
+            secondary: Globals.caribouBrown,
+            tertiary: Globals.caribouDarkBlue,
+          ),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Globals.caribouDarkBlue,
+            titleTextStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontFamily: 'FreeSans',
+              fontSize: 20.0,
+            ),
           ),
           canvasColor: Globals.caribouLightGrey,
         ),
@@ -39,8 +50,9 @@ class MyApp extends StatelessWidget {
               const ProductsOverviewPage(),
           ProductDetailPage.routeName: (context) => const ProductDetailPage(),
           CartPage.routeName: (context) => const CartPage(),
-          PaymentInfoPage.routeName: (context) => const PaymentInfoPage(),
+
           CustomerInfoPage.routeName: (context) => const CustomerInfoPage(),
+          PaymentInfoPage.routeName: (context) => const PaymentInfoPage(),
         },
       ),
     );

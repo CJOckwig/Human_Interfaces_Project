@@ -24,7 +24,7 @@ class ProductsOverviewPage extends StatelessWidget {
             ProductsOverviewPage.routeName,
           ),
         ),
-        title: const Text('Antelope Coffee'),
+        title: const Text('//debug: cart icons below'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(

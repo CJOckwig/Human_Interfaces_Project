@@ -9,9 +9,15 @@ import '../pages/cart_page.dart';
 import '../providers/cust_provider.dart';
 import '../data/globals.dart';
 
+// These two page imports are necessary for every page with an appBar
+import '../pages/cart_page.dart';
+import '../pages/products_overview_page.dart';
+
+import '../pages/payment_info_page.dart';
+
 class CustomerInfoPage extends StatelessWidget {
   const CustomerInfoPage({super.key});
-  static const String routeName = '/customer_info';
+  static const String routeName = './customer_info_page';
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,8 @@ class CustomerInfoPage extends StatelessWidget {
               ProductsOverviewPage.routeName,
             ),
           ),
-          title: const Text('Customer Info'),
+
+          title: const Text('Customer Information'),
           actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -111,7 +118,10 @@ class CustomerInfoPage extends StatelessWidget {
                   onPressed: () {},
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    PaymentInfoPage.routeName,
+                  ),
                   style: ButtonStyle(
                     //foregroundColor: Globals.coffeeCream,
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
