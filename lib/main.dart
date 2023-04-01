@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state/pages/customer_info_page.dart';
+
 import 'package:flutter_state/pages/payment_info_page.dart';
 import 'package:provider/provider.dart';
 
@@ -6,6 +8,8 @@ import './data/globals.dart';
 import './pages/product_detail_page.dart';
 import './pages/products_overview_page.dart';
 import './pages/cart_page.dart';
+import './pages/payment_info_page.dart';
+
 import './pages/customer_info_page.dart';
 import './providers/cart_provider.dart';
 
@@ -40,12 +44,13 @@ class MyApp extends StatelessWidget {
           canvasColor: Globals.caribouLightGrey,
         ),
         // home: const ProductsOverviewPage(),
-        initialRoute: ProductsOverviewPage.routeName,
+        initialRoute: PaymentInfoPage.routeName,
         routes: {
           ProductsOverviewPage.routeName: (context) =>
               const ProductsOverviewPage(),
           ProductDetailPage.routeName: (context) => const ProductDetailPage(),
           CartPage.routeName: (context) => const CartPage(),
+
           CustomerInfoPage.routeName: (context) => const CustomerInfoPage(),
           PaymentInfoPage.routeName: (context) => const PaymentInfoPage(),
         },

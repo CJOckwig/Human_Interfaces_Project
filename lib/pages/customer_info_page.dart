@@ -2,6 +2,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+//pages imports
+import '../pages/products_overview_page.dart';
+import '../pages/cart_page.dart';
+import '../providers/cust_provider.dart';
 import '../data/globals.dart';
 
 // These two page imports are necessary for every page with an appBar
@@ -17,6 +22,7 @@ class CustomerInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var selectedOption;
+    //final cust = Provider.of<Customer>(context);
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -28,6 +34,7 @@ class CustomerInfoPage extends StatelessWidget {
               ProductsOverviewPage.routeName,
             ),
           ),
+
           title: const Text('Customer Information'),
           actions: <Widget>[
             IconButton(
@@ -45,7 +52,7 @@ class CustomerInfoPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Padding(padding: EdgeInsets.all(5)),
+            Padding(padding: EdgeInsets.all(15)),
             SizedBox(width: 16),
             Expanded(
               child: TextField(

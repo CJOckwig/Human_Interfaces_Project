@@ -9,13 +9,13 @@ enum store { sioux_Falls, brookings }
 
 // ignore: empty_constructor_bodies, empty_constructor_bodies
 class Customer {
-  late String first_Name;
-  late String last_Name;
-  late String phone_Number;
-  late String email;
-  late store Location;
+  final String first_Name;
+  final String last_Name;
+  final String phone_Number;
+  final String email;
+  final store Location;
 
-  var first_name;
+  //var first_name;
 
   Customer({
     required this.first_Name,
