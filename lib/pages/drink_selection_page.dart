@@ -1,15 +1,13 @@
-// pages/products_overview_page.dart
-
 import 'package:flutter/material.dart';
 
-import '../data/temp_data.dart';
-import '../widgets/product_item.dart';
+import '../data/drink_data.dart';
+import '../widgets/drink_item_widget.dart';
 import '../pages/cart_page.dart';
 
-class ProductsOverviewPage extends StatelessWidget {
-  const ProductsOverviewPage({super.key});
+class DrinkSelectionPage extends StatelessWidget {
+  const DrinkSelectionPage({super.key});
 
-  static const String routeName = '/products_overview';
+  static const String routeName = '/drink_selection';
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +19,10 @@ class ProductsOverviewPage extends StatelessWidget {
           ),
           onPressed: () => Navigator.pushNamed(
             context,
-            ProductsOverviewPage.routeName,
+            DrinkSelectionPage.routeName,
           ),
         ),
-        title: const Text('//debug: cart icons below'),
+        title: const Text('Antelope Coffee'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -39,17 +37,18 @@ class ProductsOverviewPage extends StatelessWidget {
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(10.0),
-        itemCount: TEMP_PRODUCTS.length,
-        itemBuilder: (context, index) => ProductItem(
-          id: TEMP_PRODUCTS[index].id,
-          title: TEMP_PRODUCTS[index].title,
-          imageUrl: TEMP_PRODUCTS[index].imageUrl,
+        itemCount: DRINK_ITEMS.length,
+        itemBuilder: (context, index) => DrinkItem(
+          drinkId: DRINK_ITEMS[index].drinkId,
+          name: DRINK_ITEMS[index].name,
+          description: DRINK_ITEMS[index].description,
+          imageUrl: DRINK_ITEMS[index].imageUrl,
         ),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1.5, // 3.0 / 2.0
+          crossAxisCount: 1,
+          childAspectRatio: 2, // 3.0 / 2.0
           crossAxisSpacing: 10.0,
-          mainAxisSpacing: 10.0,
+          mainAxisSpacing: 30.0,
         ),
       ),
     );

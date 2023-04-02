@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_state/pages/customer_info_page.dart';
+
+import 'package:flutter_state/pages/drink_customize_page.dart';
+
+
 
 import 'package:flutter_state/pages/payment_info_page.dart';
 import 'package:provider/provider.dart';
 
 import './data/globals.dart';
-import './pages/product_detail_page.dart';
-import './pages/products_overview_page.dart';
+import './pages/drink_selection_page.dart';
 import './pages/cart_page.dart';
 import './pages/payment_info_page.dart';
 
@@ -44,11 +46,11 @@ class MyApp extends StatelessWidget {
           canvasColor: Globals.caribouLightGrey,
         ),
         // home: const ProductsOverviewPage(),
-        initialRoute: ProductsOverviewPage.routeName,
+        initialRoute: DrinkSelectionPage.routeName,
         routes: {
-          ProductsOverviewPage.routeName: (context) =>
-              const ProductsOverviewPage(),
-          ProductDetailPage.routeName: (context) => const ProductDetailPage(),
+          DrinkSelectionPage.routeName: (context) => const DrinkSelectionPage(),
+          DrinkCustomizePage.routeName: (context) =>
+              const DrinkCustomizePageFull(),
           CartPage.routeName: (context) => const CartPage(),
           CustomerInfoPage.routeName: (context) => const CustomerInfoPage(),
           PaymentInfoPage.routeName: (context) => const PaymentInfoPage(),

@@ -5,9 +5,10 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 
+// ignore: constant_identifier_names
 enum store { sioux_Falls, brookings }
 
-// ignore: empty_constructor_bodies, empty_constructor_bodies
+// ignore: empty_constructor_bodies
 class Customer {
   final String first_Name;
   final String last_Name;
