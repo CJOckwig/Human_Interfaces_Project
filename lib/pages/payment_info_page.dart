@@ -69,7 +69,7 @@ class PaymentInfoPage extends StatelessWidget {
                       decoration:
                           const InputDecoration(labelText: 'Address Line 1'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.streetAddress,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -84,14 +84,14 @@ class PaymentInfoPage extends StatelessWidget {
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'State'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.name,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'City'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.name,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),

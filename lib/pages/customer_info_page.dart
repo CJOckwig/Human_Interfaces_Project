@@ -117,63 +117,65 @@ class CustomerInfoPage extends StatelessWidget {
                   onChanged: (selectedOption) {},
                   value: selectedOption,
                 ),
-                Row(
-                  children: [
-                    // Continue Shopping Button
-                    Expanded(
-                      child: SizedBox(
-                        height: 50,
-                        child: ElevatedButton(
-                          style: TextButton.styleFrom(
-                            side: BorderSide(
-                              color: Theme.of(context).colorScheme.tertiary,
-                              width: 3,
+                Flexible(
+                  child: Row(
+                    children: [
+                      // Continue Shopping Button
+                      Expanded(
+                        child: SizedBox(
+                          height: 50,
+                          child: ElevatedButton(
+                            style: TextButton.styleFrom(
+                              side: BorderSide(
+                                color: Theme.of(context).colorScheme.tertiary,
+                                width: 3,
+                              ),
+                              foregroundColor:
+                                  Theme.of(context).colorScheme.tertiary,
+                              backgroundColor: Colors.white,
+                              textStyle: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                            foregroundColor:
-                                Theme.of(context).colorScheme.tertiary,
-                            backgroundColor: Colors.white,
-                            textStyle: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
+                            onPressed: () => Navigator.pushNamed(
+                              context,
+                              DrinkSelectionPage.routeName,
                             ),
-                          ),
-                          onPressed: () => Navigator.pushNamed(
-                            context,
-                            DrinkSelectionPage.routeName,
-                          ),
-                          child: const Text('Continue Shopping'),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    // Check Out Button
-                    Expanded(
-                      child: SizedBox(
-                        height: 50,
-                        child: ElevatedButton(
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor:
-                                Theme.of(context).colorScheme.tertiary,
-                            textStyle: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          onPressed: () => Navigator.pushNamed(
-                            context,
-                            PaymentInfoPage.routeName,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text('Payment Information'),
-                            ],
+                            child: const Text('Continue Shopping'),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 20),
+                      // Check Out Button
+                      Expanded(
+                        child: SizedBox(
+                          height: 50,
+                          child: ElevatedButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.tertiary,
+                              textStyle: const TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            onPressed: () => Navigator.pushNamed(
+                              context,
+                              PaymentInfoPage.routeName,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text('Payment Information'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             )));
