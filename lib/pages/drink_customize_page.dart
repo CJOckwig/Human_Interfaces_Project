@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_state/pages/cart_page.dart';
 import '../widgets/drink_item_widget.dart';
-import '../models/drink_model.dart';
 import '../providers/cart_provider.dart';
-import '../providers/drink_provider.dart';
 import '../data/globals.dart';
 
 const List<String> milkTypes = <String>[

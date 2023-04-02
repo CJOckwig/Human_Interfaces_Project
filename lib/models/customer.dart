@@ -1,5 +1,5 @@
 //Customer information page
-// ignore_for_file: empty_constructor_bodies
+// ignore_for_file: empty_constructor_bodies, non_constant_identifier_names
 
 import 'dart:html';
 

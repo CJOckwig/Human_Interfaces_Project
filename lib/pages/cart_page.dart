@@ -86,6 +86,27 @@ class CartPage extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: cart.discountBool
+                          ? <Widget>[
+                              const Text(
+                                'Discount:',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                              const Spacer(),
+                              Text(
+                                '- \$${cart.discountAmount.toStringAsFixed(2)}',
+                                style: const TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ]
+                          : <Widget>[],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         const Text(
                           'Sales Tax:',
