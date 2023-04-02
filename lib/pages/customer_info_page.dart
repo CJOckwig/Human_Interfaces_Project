@@ -2,6 +2,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_state/widgets/Cust_info_widget.dart';
 import 'package:provider/provider.dart';
 //pages imports
 
@@ -18,7 +19,6 @@ class CustomerInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var selectedOption;
     //final cust = Provider.of<Customer>(context);
     return Scaffold(
         appBar: AppBar(
@@ -44,7 +44,8 @@ class CustomerInfoPage extends StatelessWidget {
             ),
           ],
         ),
-        body: Card(
+        body: ListView(children: [
+          Card(
             margin: EdgeInsets.all(15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -57,8 +58,7 @@ class CustomerInfoPage extends StatelessWidget {
                       decoration: InputDecoration(
                         labelText: 'First name',
                         border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Globals.caribouBrown, width: 2.0),
+                          borderSide: BorderSide(color: Globals.caribouBrown),
                         ),
                       ),
                     ),
@@ -73,7 +73,6 @@ class CustomerInfoPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(
                           color: Globals.caribouBrown,
-                          width: 2.0,
                         )),
                       ),
                     ),
@@ -88,7 +87,6 @@ class CustomerInfoPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(
                           color: Globals.caribouBrown,
-                          width: 2.0,
                         )),
                       ),
                     ),
@@ -103,20 +101,12 @@ class CustomerInfoPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderSide: BorderSide(
                           color: Globals.caribouBrown,
-                          width: 2.0,
                         )),
                       ),
                     ),
                   ),
                 ),
-                DropdownButton(
-                  items: [
-                    DropdownMenuItem(value: 1, child: Text('Brookings')),
-                    DropdownMenuItem(value: 2, child: Text('Sioux Falls')),
-                  ],
-                  onChanged: (selectedOption) {},
-                  value: selectedOption,
-                ),
+                TwoOptionComboBox(),
                 Flexible(
                   child: Row(
                     children: [
@@ -128,7 +118,6 @@ class CustomerInfoPage extends StatelessWidget {
                             style: TextButton.styleFrom(
                               side: BorderSide(
                                 color: Theme.of(context).colorScheme.tertiary,
-                                width: 3,
                               ),
                               foregroundColor:
                                   Theme.of(context).colorScheme.tertiary,
@@ -146,7 +135,7 @@ class CustomerInfoPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 20),
+                      const SizedBox(width: 10),
                       // Check Out Button
                       Expanded(
                         child: SizedBox(
@@ -178,6 +167,8 @@ class CustomerInfoPage extends StatelessWidget {
                   ),
                 ),
               ],
-            )));
+            ),
+          ),
+        ]));
   }
 }
