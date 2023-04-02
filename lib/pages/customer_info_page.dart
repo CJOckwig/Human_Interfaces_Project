@@ -106,7 +106,10 @@ class CustomerInfoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                TwoOptionComboBox(),
+                Padding(
+                  padding: EdgeInsets.all(15),
+                  child: TwoOptionComboBox(),
+                ),
                 Flexible(
                   child: Row(
                     children: [
