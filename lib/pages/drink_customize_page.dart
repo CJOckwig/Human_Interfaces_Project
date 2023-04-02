@@ -24,7 +24,7 @@ class DrinkCustomizePageFull extends StatefulWidget {
 }
 
 class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
-  static const String routeName = '/drink_customize';
+  static const String routeName = './drink_customize';
 
   bool isDecaf = false;
   bool hasExtraShot = false;

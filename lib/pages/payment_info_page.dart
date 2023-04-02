@@ -7,11 +7,12 @@ import 'package:provider/provider.dart';
 // These two page imports are necessary for every page with an appBar
 import '../pages/cart_page.dart';
 import '../pages/drink_selection_page.dart';
+import '../pages/confirmation_page.dart';
 import '../providers/cart_provider.dart';
 
 class PaymentInfoPage extends StatelessWidget {
   const PaymentInfoPage({super.key});
-  static const String routeName = '/payment_info_page';
+  static const String routeName = './payment_info_page';
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class PaymentInfoPage extends StatelessWidget {
           ),
           onPressed: () => Navigator.pushNamed(
             context,
-            DrinkSelectionPage.routeName,
+            CartPage.routeName,
           ),
         ),
         title: const Text('Payment Information'),
@@ -124,10 +125,10 @@ class PaymentInfoPage extends StatelessWidget {
                             context,
                             listen: false,
                           ).clear();
-                          // change navigator to successful purchase screen later
                           Navigator.pushNamed(
                             context,
-                            DrinkSelectionPage.routeName,
+                            ConfirmationPage.routeName,
+                            arguments: TimeOfDay.now(),
                           );
                         },
                         child: const Text('Purchase')),

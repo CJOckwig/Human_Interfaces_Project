@@ -7,7 +7,7 @@ import '../pages/cart_page.dart';
 class DrinkSelectionPage extends StatelessWidget {
   const DrinkSelectionPage({super.key});
 
-  static const String routeName = '/drink_selection';
+  static const String routeName = './drink_selection';
 
   @override
   Widget build(BuildContext context) {
