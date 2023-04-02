@@ -2,11 +2,12 @@
 //Payment information Page
 
 import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
 
 // These two page imports are necessary for every page with an appBar
 import '../pages/cart_page.dart';
-import '../pages/products_overview_page.dart';
+import '../pages/drink_selection_page.dart';
+import '../providers/cart_provider.dart';
 
 class PaymentInfoPage extends StatelessWidget {
   const PaymentInfoPage({super.key});
@@ -22,7 +23,7 @@ class PaymentInfoPage extends StatelessWidget {
           ),
           onPressed: () => Navigator.pushNamed(
             context,
-            ProductsOverviewPage.routeName,
+            DrinkSelectionPage.routeName,
           ),
         ),
         title: const Text('Payment Information'),
@@ -45,7 +46,7 @@ class PaymentInfoPage extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration: const InputDecoration(
                           labelText: 'Credit Information'),
@@ -53,7 +54,7 @@ class PaymentInfoPage extends StatelessWidget {
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration:
                           const InputDecoration(labelText: 'Security Code'),
@@ -61,7 +62,7 @@ class PaymentInfoPage extends StatelessWidget {
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration:
                           const InputDecoration(labelText: 'Address Line 1'),
@@ -69,7 +70,7 @@ class PaymentInfoPage extends StatelessWidget {
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration:
                           const InputDecoration(labelText: 'Address Line 2'),
@@ -77,21 +78,21 @@ class PaymentInfoPage extends StatelessWidget {
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'State'),
                       textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'City'),
                       textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration:
                           const InputDecoration(labelText: 'Expiration Month'),
@@ -99,7 +100,7 @@ class PaymentInfoPage extends StatelessWidget {
                       keyboardType: TextInputType.number,
                     )),
                 Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration:
                           const InputDecoration(labelText: 'Expiration Year'),
@@ -117,10 +118,18 @@ class PaymentInfoPage extends StatelessWidget {
                     ),
                     const Spacer(),
                     TextButton(
-                        onPressed: () => Navigator.pushNamed(
-                              context,
-                              PaymentInfoPage.routeName,
-                            ),
+                        onPressed: () {
+                          // Empty the current cart on a successful purchase
+                          Provider.of<Cart>(
+                            context,
+                            listen: false,
+                          ).clear();
+                          // change navigator to successful purchase screen later
+                          Navigator.pushNamed(
+                            context,
+                            DrinkSelectionPage.routeName,
+                          );
+                        },
                         child: const Text('Purchase')),
                   ],
                 ),

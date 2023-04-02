@@ -4,16 +4,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //pages imports
-import '../pages/products_overview_page.dart';
+import '../pages/drink_selection_page.dart';
 import '../pages/cart_page.dart';
-import '../providers/cust_provider.dart';
-import '../data/globals.dart';
-
-// These two page imports are necessary for every page with an appBar
-import '../pages/cart_page.dart';
-import '../pages/products_overview_page.dart';
-
 import '../pages/payment_info_page.dart';
+
+import '../data/globals.dart';
 
 class CustomerInfoPage extends StatelessWidget {
   const CustomerInfoPage({super.key});
@@ -31,7 +26,7 @@ class CustomerInfoPage extends StatelessWidget {
             ),
             onPressed: () => Navigator.pushNamed(
               context,
-              ProductsOverviewPage.routeName,
+              DrinkSelectionPage.routeName,
             ),
           ),
           title: const Text('Customer Information'),

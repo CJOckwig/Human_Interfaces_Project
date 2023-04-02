@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 // ignore: constant_identifier_names
 enum store { sioux_Falls, brookings }
 
-// ignore: empty_constructor_bodies, empty_constructor_bodies
+// ignore: empty_constructor_bodies
 class Customer {
   late String first_Name;
   late String last_Name;

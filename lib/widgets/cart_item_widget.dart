@@ -6,27 +6,29 @@ import '../providers/cart_provider.dart';
 class CartItemWidget extends StatelessWidget {
   const CartItemWidget({
     super.key,
+    required this.cartId,
     required this.name,
     required this.quantity,
     required this.price,
-    required this.id,
+    required this.addons,
   });
 
+  final String cartId;
   final String name;
   final int quantity;
   final double price;
-  final String id;
+  final String addons;
 
   @override
   Widget build(BuildContext context) {
     // remove item from cart
     return Dismissible(
-      key: ValueKey(id),
+      key: ValueKey(cartId),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) => Provider.of<Cart>(
         context,
         listen: false,
-      ).removeItem(id),
+      ).removeItem(cartId),
       background: Container(
         color: Theme.of(context).colorScheme.error,
         alignment: Alignment.centerRight,
@@ -54,10 +56,15 @@ class CartItemWidget extends StatelessWidget {
               name,
               style: const TextStyle(fontSize: 20),
             ),
-            subtitle: Text('x $quantity'),
-            trailing: Text(
-              '\$${(price * quantity).toStringAsFixed(2)}',
-              style: const TextStyle(fontSize: 16.0),
+            subtitle: Text(addons),
+            trailing: Column(
+              children: [
+                Text(
+                  '\$${(price * quantity).toStringAsFixed(2)}',
+                  style: const TextStyle(fontSize: 16.0),
+                ),
+                Text('x $quantity'),
+              ],
             ),
           ),
         ),

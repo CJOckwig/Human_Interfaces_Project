@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/cart_provider.dart';
-import '../pages/products_overview_page.dart';
+import '../pages/drink_selection_page.dart';
 import '../pages/customer_info_page.dart';
 import '../widgets/cart_item_widget.dart';
 
@@ -22,7 +22,7 @@ class CartPage extends StatelessWidget {
           ),
           onPressed: () => Navigator.pushNamed(
             context,
-            ProductsOverviewPage.routeName,
+            DrinkSelectionPage.routeName,
           ),
         ),
         title: const Text('Your Cart'),
@@ -47,10 +47,11 @@ class CartPage extends StatelessWidget {
               child: ListView.builder(
             itemCount: cart.items.length,
             itemBuilder: (context, index) => CartItemWidget(
+              cartId: cart.items.keys.toList()[index],
               name: cart.items.values.toList()[index].name,
               price: cart.items.values.toList()[index].price,
               quantity: cart.items.values.toList()[index].quantity,
-              id: cart.items.keys.toList()[index],
+              addons: cart.items.values.toList()[index].addons,
             ),
           )),
         ],
@@ -151,7 +152,7 @@ class CartPage extends StatelessWidget {
                       ),
                       onPressed: () => Navigator.pushNamed(
                         context,
-                        ProductsOverviewPage.routeName,
+                        DrinkSelectionPage.routeName,
                       ),
                       child: const Text('Continue Shopping'),
                     ),

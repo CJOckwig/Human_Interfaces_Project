@@ -5,7 +5,9 @@ enum DrinkSize { small, medium, large }
 enum Milk { none, onePct, twoPct, whole, oat, almond }
 
 class Drink {
+  final String drinkId;
   final String name;
+  final String description;
   final String imageUrl;
   final Map pricePerSize;
   late double _price;
@@ -21,7 +23,9 @@ class Drink {
   // Return a new instance of Drink. The price is set
   // to reflect the size as found in pricePerSize
   Drink({
+    required this.drinkId,
     required this.name,
+    required this.description,
     required this.imageUrl,
     required this.pricePerSize,
     this.milk = Milk.twoPct,
