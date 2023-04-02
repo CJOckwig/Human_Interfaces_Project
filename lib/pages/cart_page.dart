@@ -88,18 +88,24 @@ class CartPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: cart.discountBool
                           ? <Widget>[
-                              const Text(
-                                'Discount:',
-                                style: TextStyle(
-                                  fontSize: 16.0,
+                              const Tooltip(
+                                message: '\$1 off any purchase of \$10 or more',
+                                child: Text(
+                                  'Discount:',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                  ),
                                 ),
                               ),
                               const Spacer(),
-                              Text(
-                                '- \$${cart.discountAmount.toStringAsFixed(2)}',
-                                style: const TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.red,
+                              Tooltip(
+                                message: '\$1 off any purchase of \$10 or more',
+                                child: Text(
+                                  '- \$${cart.discountAmount.toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.red,
+                                  ),
                                 ),
                               ),
                             ]

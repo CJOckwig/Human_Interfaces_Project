@@ -41,7 +41,7 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
   String selectedMilkType = '2%'; // Default milk type
 
   String generateAddonsDescription() {
-    String addons = '$selectedSizeType, $selectedMilkType';
+    String addons = '$selectedSizeType, $selectedMilkType Milk';
     if (isDecaf) {
       addons += ', Decaf';
     }

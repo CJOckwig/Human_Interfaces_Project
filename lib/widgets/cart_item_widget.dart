@@ -50,8 +50,9 @@ class CartItemWidget extends StatelessWidget {
           vertical: 4.0,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(2.0),
           child: ListTile(
+            isThreeLine: true,
             title: Text(
               name,
               style: const TextStyle(fontSize: 20),
