@@ -7,7 +7,7 @@ import '../pages/cart_page.dart';
 class DrinkSelectionPage extends StatelessWidget {
   const DrinkSelectionPage({super.key});
 
-  static const String routeName = '/drink_selection';
+  static const String routeName = './drink_selection';
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +43,9 @@ class DrinkSelectionPage extends StatelessWidget {
           name: DRINK_ITEMS[index].name,
           description: DRINK_ITEMS[index].description,
           imageUrl: DRINK_ITEMS[index].imageUrl,
+          smallPrice: DRINK_ITEMS[index].smallPrice,
+          mediumPrice: DRINK_ITEMS[index].mediumPrice,
+          largePrice: DRINK_ITEMS[index].largePrice,
         ),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,

@@ -9,7 +9,10 @@ List<Drink> DRINK_ITEMS = [
     description: 'A shot of espresso with steamed milk',
     imageUrl:
         'https://png.pngtree.com/element_pic/00/16/08/1457afffbf03318.jpg',
-    pricePerSize: {"small": 3.5, "medium": 4.0, "large": 4.5},
+    smallPrice: 3.5,
+    mediumPrice: 4.0,
+    largePrice: 4.5,
+    //pricePerSize: {"small": 3.5, "medium": 4.0, "large": 4.5},
   ),
   Drink(
     drinkId: 'd02',
@@ -17,7 +20,10 @@ List<Drink> DRINK_ITEMS = [
     description: 'Chocolate with espresso and steamed milk',
     imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSyI8HUXiqKnkRjXwYA73XRIK5jJI9mdHRRQ&usqp=CAU',
-    pricePerSize: {"small": 3.75, "medium": 4.25, "large": 4.75},
+    smallPrice: 3.75,
+    mediumPrice: 4.25,
+    largePrice: 4.75,
+    //pricePerSize: {"small": 3.75, "medium": 4.25, "large": 4.75},
   ),
   Drink(
     drinkId: 'd03',
@@ -25,8 +31,10 @@ List<Drink> DRINK_ITEMS = [
     description: 'Our daily medium roast',
     imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLZ5-i5O5PhkdRKKgxFOY7S0QcAXbnGVd37Q&usqp=CAU',
-    pricePerSize: {"small": 2.75, "medium": 3.0, "large": 3.25},
-    milk: Milk.none,
+    smallPrice: 2.75,
+    mediumPrice: 3.0,
+    largePrice: 3.25,
+    //pricePerSize: {"small": 2.75, "medium": 3.0, "large": 3.25},
   ),
 ];
 

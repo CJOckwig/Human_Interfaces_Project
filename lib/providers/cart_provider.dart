@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/cart_item.dart';
+import '../models/cart_model.dart';
 
 class Cart with ChangeNotifier {
   // ignore: prefer_final_fields, non_constant_identifier_names
@@ -35,14 +35,15 @@ class Cart with ChangeNotifier {
     return tax;
   }
 
-  void addItem(String cartId, String name, double price, String addons) {
+  void addItem(
+      String cartId, String name, double price, int quantity, String addons) {
     if (_items.containsKey(cartId)) {
       _items.update(
         cartId,
         (existingCartItem) => CartItem(
           cartId: existingCartItem.cartId,
           name: existingCartItem.name,
-          quantity: existingCartItem.quantity + 1,
+          quantity: existingCartItem.quantity + quantity,
           price: existingCartItem.price,
           addons: existingCartItem.addons,
         ),
@@ -53,7 +54,7 @@ class Cart with ChangeNotifier {
         () => CartItem(
           cartId: cartId,
           name: name,
-          quantity: 1,
+          quantity: quantity,
           price: price,
           addons: addons,
         ),
