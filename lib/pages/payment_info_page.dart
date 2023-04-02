@@ -140,18 +140,6 @@ class PaymentInfoPage extends StatelessWidget {
           ),
         ],
       ),
-      //Padding(  padding: EdgeInsets.only(top: 10.0, left: 15.0),)
-      /*
-        Container(
-          width: 100.0,
-          height: 100,
-          margin: const EdgeInsets.only(top: 8.0, right: 1.0),
-          decoration: BoxDecoration(
-              border: Border.all(
-            width: 1.0,
-            color: Globals.caribouBrown,
-          )),
-        ),*/
     );
   }
 }
