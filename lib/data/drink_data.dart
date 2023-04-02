@@ -7,8 +7,7 @@ List<Drink> DRINK_ITEMS = [
     drinkId: 'd01',
     name: "Latte",
     description: 'A shot of espresso with steamed milk',
-    imageUrl:
-        'https://png.pngtree.com/element_pic/00/16/08/1457afffbf03318.jpg',
+    imagePath: 'assets/latteImage.jpg',
     smallPrice: 3.5,
     mediumPrice: 4.0,
     largePrice: 4.5,
@@ -18,8 +17,7 @@ List<Drink> DRINK_ITEMS = [
     drinkId: 'd02',
     name: "Mocha",
     description: 'Chocolate with espresso and steamed milk',
-    imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSyI8HUXiqKnkRjXwYA73XRIK5jJI9mdHRRQ&usqp=CAU',
+    imagePath: 'assets/mochaImage.jpg',
     smallPrice: 3.75,
     mediumPrice: 4.25,
     largePrice: 4.75,
@@ -29,8 +27,7 @@ List<Drink> DRINK_ITEMS = [
     drinkId: 'd03',
     name: "Drip",
     description: 'Our daily medium roast',
-    imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLZ5-i5O5PhkdRKKgxFOY7S0QcAXbnGVd37Q&usqp=CAU',
+    imagePath: 'assets/coffeeImage.jpg',
     smallPrice: 2.75,
     mediumPrice: 3.0,
     largePrice: 3.25,

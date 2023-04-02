@@ -2,7 +2,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_state/widgets/Cust_info_widget.dart';
+import 'package:flutter_state/widgets/cust_info_widget.dart';
+
 import 'package:provider/provider.dart';
 //pages imports
 

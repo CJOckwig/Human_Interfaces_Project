@@ -4,7 +4,7 @@ import '../models/cart_model.dart';
 
 class Cart with ChangeNotifier {
   // ignore: prefer_final_fields, non_constant_identifier_names
-  final double TAX = 1.045;
+  final double TAX = 0.045;
   Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items {
@@ -20,19 +20,38 @@ class Cart with ChangeNotifier {
     _items.forEach((key, cartItem) {
       subtotal += cartItem.price * cartItem.quantity;
     });
+    subtotal;
     return subtotal;
   }
 
   double get totalAmount {
     var total = 0.0;
-    total = subtotalAmount * TAX;
+    total = subtotalAmount - discountAmount + taxAmount;
     return total;
   }
 
   double get taxAmount {
     var tax = 0.0;
-    tax = totalAmount - subtotalAmount;
+    tax = (subtotalAmount - discountAmount) * TAX;
     return tax;
+  }
+
+  bool get discountBool {
+    var discountBool = false;
+    var requirement = 0.0;
+    _items.forEach((key, cartItem) {
+      requirement += cartItem.price * cartItem.quantity;
+    });
+    if (requirement > 10.0) {
+      discountBool = true;
+    }
+    return discountBool;
+  }
+
+  double get discountAmount {
+    double discountAmount;
+    discountBool ? discountAmount = 1.0 : discountAmount = 0.0;
+    return discountAmount;
   }
 
   void addItem(

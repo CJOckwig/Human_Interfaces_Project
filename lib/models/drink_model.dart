@@ -10,7 +10,7 @@ class Drink {
   final String drinkId;
   final String name;
   final String description;
-  final String imageUrl;
+  final String imagePath;
   //final Map pricePerSize;
   final double smallPrice;
   final double mediumPrice;
@@ -24,7 +24,7 @@ class Drink {
     required this.drinkId,
     required this.name,
     required this.description,
-    required this.imageUrl,
+    required this.imagePath,
     //required this.pricePerSize,
     required this.smallPrice,
     required this.mediumPrice,

@@ -12,48 +12,82 @@ class DrinkSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.home,
-          ),
-          onPressed: () => Navigator.pushNamed(
-            context,
-            DrinkSelectionPage.routeName,
-          ),
-        ),
-        title: const Text('Antelope Coffee'),
-        actions: <Widget>[
-          IconButton(
+        appBar: AppBar(
+          leading: IconButton(
             icon: const Icon(
-              Icons.shopping_cart,
+              Icons.home,
             ),
             onPressed: () => Navigator.pushNamed(
               context,
-              CartPage.routeName,
+              DrinkSelectionPage.routeName,
             ),
           ),
-        ],
-      ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: DRINK_ITEMS.length,
-        itemBuilder: (context, index) => DrinkItem(
-          drinkId: DRINK_ITEMS[index].drinkId,
-          name: DRINK_ITEMS[index].name,
-          description: DRINK_ITEMS[index].description,
-          imageUrl: DRINK_ITEMS[index].imageUrl,
-          smallPrice: DRINK_ITEMS[index].smallPrice,
-          mediumPrice: DRINK_ITEMS[index].mediumPrice,
-          largePrice: DRINK_ITEMS[index].largePrice,
+          title: const Text('Antelope Coffee'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.shopping_cart,
+              ),
+              onPressed: () => Navigator.pushNamed(
+                context,
+                CartPage.routeName,
+              ),
+            ),
+          ],
         ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          childAspectRatio: 2, // 3.0 / 2.0
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 30.0,
-        ),
-      ),
-    );
+        body: Column(
+          children: <Widget>[
+            Card(
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 15.0,
+                  vertical: 10.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: const [
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Center(
+                      child: Text(
+                        'Today\'s Deal',
+                        style: TextStyle(
+                            fontSize: 24.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        '\$1 off any purchase of \$10 or more',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                  ],
+                )),
+            Expanded(
+              child: GridView.builder(
+                padding: const EdgeInsets.all(16.0),
+                itemCount: DRINK_ITEMS.length,
+                itemBuilder: (context, index) => DrinkItem(
+                  drinkId: DRINK_ITEMS[index].drinkId,
+                  name: DRINK_ITEMS[index].name,
+                  description: DRINK_ITEMS[index].description,
+                  imagePath: DRINK_ITEMS[index].imagePath,
+                  smallPrice: DRINK_ITEMS[index].smallPrice,
+                  mediumPrice: DRINK_ITEMS[index].mediumPrice,
+                  largePrice: DRINK_ITEMS[index].largePrice,
+                ),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio: 3.5, // 3.0 / 2.0
+                  crossAxisSpacing: 10.0,
+                  mainAxisSpacing: 10.0,
+                ),
+              ),
+            )
+          ],
+        ));
   }
 }

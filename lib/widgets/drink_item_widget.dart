@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
 import '../pages/drink_customize_page.dart';
 
 class DrinkArguments {
@@ -22,7 +23,7 @@ class DrinkItem extends StatelessWidget {
     required this.drinkId,
     required this.name,
     required this.description,
-    required this.imageUrl,
+    required this.imagePath,
     required this.smallPrice,
     required this.mediumPrice,
     required this.largePrice,
@@ -31,7 +32,7 @@ class DrinkItem extends StatelessWidget {
   final String drinkId;
   final String name;
   final String description;
-  final String imageUrl;
+  final String imagePath;
   final double smallPrice;
   final double mediumPrice;
   final double largePrice;
@@ -40,32 +41,64 @@ class DrinkItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5.0),
-      child: GridTile(
-        // no rounded corner support
-        footer: GridTileBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          title: Text(
-            name,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        child: GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(
-              context,
-              DrinkCustomizePage.routeName,
-              arguments: DrinkArguments(
-                idArg: drinkId,
-                nameArg: name,
-                smallArg: smallPrice,
-                mediumArg: mediumPrice,
-                largeArg: largePrice,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            DrinkCustomizePage.routeName,
+            arguments: DrinkArguments(
+              idArg: drinkId,
+              nameArg: name,
+              smallArg: smallPrice,
+              mediumArg: mediumPrice,
+              largeArg: largePrice,
+            ),
+          );
+        },
+        child: Container(
+          color: Colors.white,
+          child: Row(
+            children: <Widget>[
+              Image(image: AssetImage(imagePath)),
+              const SizedBox(
+                width: 10,
               ),
-            );
-          },
-          child: Image.network(
-            imageUrl,
-            fit: BoxFit.scaleDown,
+              Expanded(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: Row(
+                        children: [
+                          Text(
+                            name,
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.secondary,
+                                fontSize: 24.0),
+                          ),
+                          Spacer(),
+                          Text(
+                            '\$${smallPrice.toStringAsFixed(2)} - \$${largePrice.toStringAsFixed(2)}',
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.secondary),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          )
+                        ],
+                      )),
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      description,
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.secondary),
+                    ),
+                  ),
+                ],
+              )),
+            ],
           ),
         ),
       ),

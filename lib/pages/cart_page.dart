@@ -86,6 +86,33 @@ class CartPage extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: cart.discountBool
+                          ? <Widget>[
+                              const Tooltip(
+                                message: '\$1 off any purchase of \$10 or more',
+                                child: Text(
+                                  'Discount:',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
+                              const Spacer(),
+                              Tooltip(
+                                message: '\$1 off any purchase of \$10 or more',
+                                child: Text(
+                                  '- \$${cart.discountAmount.toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ),
+                            ]
+                          : <Widget>[],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         const Text(
                           'Sales Tax:',
@@ -172,10 +199,14 @@ class CartPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onPressed: () => Navigator.pushNamed(
-                        context,
-                        CustomerInfoPage.routeName,
-                      ),
+                      onPressed: cart.totalAmount > 0.0
+                          ? () {
+                              Navigator.pushNamed(
+                                context,
+                                CustomerInfoPage.routeName,
+                              );
+                            }
+                          : null,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
