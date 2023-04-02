@@ -4,7 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 //pages imports
+
 import '../pages/drink_selection_page.dart';
+
 import '../pages/cart_page.dart';
 import '../pages/payment_info_page.dart';
 
@@ -42,6 +44,7 @@ class CustomerInfoPage extends StatelessWidget {
             ),
           ],
         ),
+
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -55,81 +58,117 @@ class CustomerInfoPage extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Globals.caribouBrown, width: 2.0),
+
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Last name',
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Globals.caribouBrown,
-                    width: 2.0,
-                  )),
-                ),
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Globals.caribouBrown,
-                    width: 2.0,
-                  )),
-                ),
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Phone Number',
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    color: Globals.caribouBrown,
-                    width: 2.0,
-                  )),
-                ),
-              ),
-            ),
-            DropdownButton(
-              items: const [
-                DropdownMenuItem(value: 1, child: Text('Brookings')),
-                DropdownMenuItem(value: 2, child: Text('Sioux Falls')),
-              ],
-              onChanged: (selectedOption) {
-                selectedOption = selectedOption;
-              },
-              value: selectedOption,
-            ),
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
-              children: [
-                BackButton(
-                  onPressed: () {},
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pushNamed(
-                    context,
-                    PaymentInfoPage.routeName,
-                  ),
-                  style: ButtonStyle(
-                    //foregroundColor: Globals.coffeeCream,
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(color: Globals.caribouBrown),
-                      ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Last name',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Globals.caribouBrown,
+                        width: 2.0,
+                      )),
                     ),
                   ),
-                  child: Text('proceed to payment screen'),
+                ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Globals.caribouBrown,
+                        width: 2.0,
+                      )),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Globals.caribouBrown,
+                        width: 2.0,
+                      )),
+                    ),
+                  ),
+                ),
+                DropdownButton(
+                  items: [
+                    DropdownMenuItem(value: 1, child: Text('Brookings')),
+                    DropdownMenuItem(value: 2, child: Text('Sioux Falls')),
+                  ],
+                  onChanged: (selectedOption) {
+                    selectedOption = selectedOption;
+                  },
+                  value: selectedOption,
+                ),
+                Row(
+                  children: [
+                    // Continue Shopping Button
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              width: 3,
+                            ),
+                            foregroundColor:
+                                Theme.of(context).colorScheme.tertiary,
+                            backgroundColor: Colors.white,
+                            textStyle: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            ProductsOverviewPage.routeName,
+                          ),
+                          child: const Text('Continue Shopping'),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    // Check Out Button
+                    Expanded(
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.tertiary,
+                            textStyle: const TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            PaymentInfoPage.routeName,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text('Payment Information'),
+                              Icon(
+                                Icons.arrow_forward,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
-            )
-          ],
-        ));
+            )));
   }
 }

@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
 // These two page imports are necessary for every page with an appBar
 import '../pages/cart_page.dart';
 import '../pages/drink_selection_page.dart';
@@ -29,14 +30,16 @@ class PaymentInfoPage extends StatelessWidget {
         title: const Text('Payment Information'),
         actions: <Widget>[
           IconButton(
+
             icon: const Icon(
-              Icons.shopping_cart,
+              Icons.home,
             ),
             onPressed: () => Navigator.pushNamed(
               context,
-              CartPage.routeName,
+              ProductsOverviewPage.routeName,
             ),
           ),
+
         ],
       ),
       body: ListView(
@@ -47,6 +50,7 @@ class PaymentInfoPage extends StatelessWidget {
               children: [
                 Padding(
                     padding: const EdgeInsets.all(15.0),
+
                     child: TextFormField(
                       decoration: const InputDecoration(
                           labelText: 'Credit Information'),
@@ -93,6 +97,7 @@ class PaymentInfoPage extends StatelessWidget {
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
+
                     child: TextFormField(
                       decoration:
                           const InputDecoration(labelText: 'Expiration Month'),
@@ -138,9 +143,7 @@ class PaymentInfoPage extends StatelessWidget {
           ),
         ],
       ),
-
       //Padding(  padding: EdgeInsets.only(top: 10.0, left: 15.0),)
-
       /*
         Container(
           width: 100.0,
@@ -153,5 +156,6 @@ class PaymentInfoPage extends StatelessWidget {
           )),
         ),*/
     );
+
   }
 }
