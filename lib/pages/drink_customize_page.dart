@@ -4,6 +4,8 @@ import 'package:flutter_state/pages/cart_page.dart';
 import '../widgets/drink_item_widget.dart';
 import '../models/drink_model.dart';
 import '../providers/cart_provider.dart';
+import '../providers/drink_provider.dart';
+import '../data/globals.dart';
 
 const List<String> milkTypes = <String>[
   'None',
@@ -33,9 +35,11 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
 
   String cartId = '';
   String addonsDescription = '';
+  int quantity = 1;
+  double price = 0.0;
 
   String selectedSizeType = 'Small'; //Default size type
-  List<String> sizeTypes = ['Small', 'Medium', 'Large'];
+
   String selectedMilkType = '2%'; // Default milk type
 
   String generateAddonsDescription() {
@@ -65,6 +69,7 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments as DrinkArguments;
     final cart = Provider.of<Cart>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Antelope Coffee'),
@@ -81,24 +86,76 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
+            // Size Selection
             const Text(
               'Size:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            DropdownButton<String>(
-              value: selectedSizeType,
-              onChanged: (String? value) {
-                setState(() {
-                  selectedSizeType = value!;
-                });
-              },
-              items: sizeTypes.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+            ButtonBar(
+              children: [
+                ElevatedButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: selectedSizeType == 'Small'
+                        ? Colors.white
+                        : Colors.black45,
+                    backgroundColor: selectedSizeType == 'Small'
+                        ? Theme.of(context).colorScheme.tertiary
+                        : Globals.buttonGrey,
+                  ),
+                  onPressed: () {
+                    setState(() => selectedSizeType = 'Small');
+                    setState(() => price = args.smallArg);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Small \$${args.smallArg.toStringAsFixed(2)}'),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: selectedSizeType == 'Medium'
+                        ? Colors.white
+                        : Colors.black45,
+                    backgroundColor: selectedSizeType == 'Medium'
+                        ? Theme.of(context).colorScheme.tertiary
+                        : Globals.buttonGrey,
+                  ),
+                  onPressed: () {
+                    setState(() => selectedSizeType = 'Medium');
+                    setState(() => price = args.mediumArg);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Medium \$${args.mediumArg.toStringAsFixed(2)}'),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: selectedSizeType == 'Large'
+                        ? Colors.white
+                        : Colors.black45,
+                    backgroundColor: selectedSizeType == 'Large'
+                        ? Theme.of(context).colorScheme.tertiary
+                        : Globals.buttonGrey,
+                  ),
+                  onPressed: () {
+                    setState(() => selectedSizeType = 'Large');
+                    setState(() => price = args.largeArg);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Large \$${args.largeArg.toStringAsFixed(2)}'),
+                    ],
+                  ),
+                ),
+              ],
             ),
+            // Milk Selection
             const Text(
               'Milk:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -118,7 +175,7 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
               }).toList(),
             ),
             const SizedBox(height: 16),
-
+            // Options Selection
             const Text(
               'Options:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -155,6 +212,7 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
               ],
             ),
             const SizedBox(height: 16),
+            // Syrups Selection
             const Text(
               'Syrups:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -193,11 +251,36 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
       persistentFooterButtons: [
         Row(
           children: [
-            const Expanded(
+            Expanded(
               child: SizedBox(
-                height: 50,
-                child: Text('//qty selection here'),
-              ),
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          if (quantity > 1) {
+                            setState(() {
+                              quantity--;
+                            });
+                          }
+                        },
+                        icon: const Icon(Icons.remove_circle),
+                      ),
+                      Text(
+                        quantity.toString(),
+                        style: const TextStyle(fontSize: 30.0),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            quantity++;
+                          });
+                        },
+                        icon: const Icon(Icons.add_circle_outline),
+                      ),
+                    ],
+                  )),
             ),
             const SizedBox(width: 20),
             // Check Out Button
@@ -214,16 +297,18 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
                     ),
                   ),
                   onPressed: () {
+                    if (price == 0.0) {
+                      price = args.smallArg;
+                    }
+                    quantity = quantity;
                     cartId = args.idArg;
                     addonsDescription = generateAddonsDescription();
                     cartId += addonsDescription;
                     cart.addItem(
-                      // id
                       cartId,
-                      // name
                       args.nameArg,
-                      // price
-                      5.0,
+                      price,
+                      quantity,
                       addonsDescription,
                     );
                     Navigator.pushNamed(context, CartPage.routeName);
