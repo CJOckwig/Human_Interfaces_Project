@@ -199,10 +199,14 @@ class CartPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onPressed: () => Navigator.pushNamed(
-                        context,
-                        CustomerInfoPage.routeName,
-                      ),
+                      onPressed: cart.totalAmount > 0.0
+                          ? () {
+                              Navigator.pushNamed(
+                                context,
+                                CustomerInfoPage.routeName,
+                              );
+                            }
+                          : null,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
