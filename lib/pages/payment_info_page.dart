@@ -2,6 +2,7 @@
 //Payment information Page
 
 import 'package:flutter/material.dart';
+import 'package:flutter_state/pages/customer_info_page.dart';
 import 'package:provider/provider.dart';
 
 // These two page imports are necessary for every page with an appBar
@@ -114,7 +115,7 @@ class PaymentInfoPage extends StatelessWidget {
                       icon: const Icon(Icons.arrow_back),
                       onPressed: () => Navigator.pushNamed(
                         context,
-                        PaymentInfoPage.routeName,
+                        CustomerInfoPage.routeName,
                       ),
                     ),
                     const Spacer(),
