@@ -2,6 +2,7 @@
 //Payment information Page
 
 import 'package:flutter/material.dart';
+import 'package:flutter_state/pages/customer_info_page.dart';
 import 'package:provider/provider.dart';
 
 // These two page imports are necessary for every page with an appBar
@@ -68,7 +69,7 @@ class PaymentInfoPage extends StatelessWidget {
                       decoration:
                           const InputDecoration(labelText: 'Address Line 1'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.streetAddress,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -83,14 +84,14 @@ class PaymentInfoPage extends StatelessWidget {
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'State'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.name,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: TextFormField(
                       decoration: const InputDecoration(labelText: 'City'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.name,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
@@ -114,7 +115,7 @@ class PaymentInfoPage extends StatelessWidget {
                       icon: const Icon(Icons.arrow_back),
                       onPressed: () => Navigator.pushNamed(
                         context,
-                        PaymentInfoPage.routeName,
+                        CustomerInfoPage.routeName,
                       ),
                     ),
                     const Spacer(),
@@ -139,18 +140,6 @@ class PaymentInfoPage extends StatelessWidget {
           ),
         ],
       ),
-      //Padding(  padding: EdgeInsets.only(top: 10.0, left: 15.0),)
-      /*
-        Container(
-          width: 100.0,
-          height: 100,
-          margin: const EdgeInsets.only(top: 8.0, right: 1.0),
-          decoration: BoxDecoration(
-              border: Border.all(
-            width: 1.0,
-            color: Globals.caribouBrown,
-          )),
-        ),*/
     );
   }
 }
