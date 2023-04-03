@@ -5,6 +5,7 @@ import '../widgets/drink_item_widget.dart';
 import '../providers/cart_provider.dart';
 import '../data/globals.dart';
 
+// List of milk to populate the Milk Dropdown
 const List<String> milkTypes = <String>[
   'None',
   '1%',
@@ -24,6 +25,8 @@ class DrinkCustomizePageFull extends StatefulWidget {
 class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
   static const String routeName = './drink_customize';
 
+  // Booleans for customizations, set with checkboxes
+  // Applied to the Drink as it is placed in the Cart
   bool isDecaf = false;
   bool hasExtraShot = false;
   bool hasWhippedCream = false;
@@ -31,15 +34,18 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
   bool hasHazelnutSyrup = false;
   bool hasVanillaSyrup = false;
 
+  // cartId will become the unique identifer for each CartItem
   String cartId = '';
+  // addonsDescription will show customizations for a CartItem on the CartPage
   String addonsDescription = '';
   int quantity = 1;
   double price = 0.0;
 
   String selectedSizeType = 'Small'; //Default size type
-
   String selectedMilkType = '2%'; // Default milk type
 
+  // Called when 'Add To Order' is clicked. Generates the description for a
+  // CartItem which is concatenated onto its drinkId to form a Key
   String generateAddonsDescription() {
     String addons = '$selectedSizeType, $selectedMilkType Milk';
     if (isDecaf) {
@@ -67,8 +73,10 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)?.settings.arguments as DrinkArguments;
     final cart = Provider.of<Cart>(context, listen: false);
-
     return Scaffold(
+      // Limited AppBar - An implied leading back-arrow is functionally
+      // the same as 'Home'. A 'Cart' button is excluded to prevent confusion
+      // around adding an item to the cart versus navigating without adding
       appBar: AppBar(
         title: const Text('Antelope Coffee'),
       ),
@@ -84,11 +92,16 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
-            // Size Selection
+            // Size Selection Text
             const Text(
               'Size:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            // Size Selection ButtonBar - functions like a set of radio buttons
+            // OnPress sets the size to Small, Medium, or Large while also
+            // setting the price appropriately. The appearance of each button
+            // is changed with a Conditional (ternary) operator to appear
+            // 'active' or 'inactive'
             ButtonBar(
               children: [
                 ElevatedButton(
@@ -153,11 +166,12 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
                 ),
               ],
             ),
-            // Milk Selection
+            // Milk Selection Text
             const Text(
               'Milk:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            // Milk Selection Dropdown - populated with List milkTypes
             DropdownButton<String>(
               value: selectedMilkType,
               onChanged: (String? value) {
@@ -173,11 +187,12 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
               }).toList(),
             ),
             const SizedBox(height: 16),
-            // Options Selection
+            // Options Selection Text
             const Text(
               'Options:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            // Column of checkboxes for customizations
             Column(
               children: [
                 CheckboxListTile(
@@ -210,11 +225,12 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
               ],
             ),
             const SizedBox(height: 16),
-            // Syrups Selection
+            // Syrups Selection Text
             const Text(
               'Syrups:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
+            // Column of Syrups with checkboxes - can select multiple syrups
             Column(
               children: [
                 CheckboxListTile(
@@ -246,12 +262,15 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
           ],
         ),
       ),
+      // Persistent Footer allows customer to Add To Cart without scrolling down
       persistentFooterButtons: [
         Row(
           children: [
             Expanded(
               child: SizedBox(
                   height: 50,
+                  // Row displays the quantity to be added
+                  // Buttons for incrementing and decrementing
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -295,9 +314,13 @@ class DrinkCustomizePage extends State<DrinkCustomizePageFull> {
                     ),
                   ),
                   onPressed: () {
+                    // If the customer doesn't change the default size, this
+                    // applies the default price. args.smallArg is not available
+                    // in the constructor, so it is applied here
                     if (price == 0.0) {
                       price = args.smallArg;
                     }
+                    // Sending quantity to cart.addItem fails without this assignment
                     quantity = quantity;
                     cartId = args.idArg;
                     addonsDescription = generateAddonsDescription();

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../pages/drink_selection_page.dart';
 
@@ -12,6 +11,9 @@ class ConfirmationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
+      // AppBar without the standard navigation options
+      // The customer may only 'close' the page to return home
+      // Distinct appearance to make it clear the transaction is complete
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: <Widget>[
@@ -26,6 +28,7 @@ class ConfirmationPage extends StatelessWidget {
           ),
         ],
       ),
+      // Large text with a new background color to signal end of transaction
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

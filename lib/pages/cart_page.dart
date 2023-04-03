@@ -6,6 +6,7 @@ import '../pages/drink_selection_page.dart';
 import '../pages/customer_info_page.dart';
 import '../widgets/cart_item_widget.dart';
 
+// CartPage displays items added to the order, but not yet purchased.
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -15,6 +16,7 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
     return Scaffold(
+      // Standard AppBar
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -38,6 +40,7 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
+      // The Body contains a ListView of all CartItems
       body: Column(
         children: <Widget>[
           const SizedBox(
@@ -56,6 +59,8 @@ class CartPage extends StatelessWidget {
           )),
         ],
       ),
+      // Persistent Footer displays cost information and 'Check Out' button
+      // for visibility without needing to scroll
       persistentFooterButtons: [
         Column(
           children: [
@@ -86,6 +91,8 @@ class CartPage extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // Conditional Ternary displays the Discount row only if
+                      // the requirements are met.
                       children: cart.discountBool
                           ? <Widget>[
                               const Tooltip(
@@ -109,7 +116,7 @@ class CartPage extends StatelessWidget {
                                 ),
                               ),
                             ]
-                          : <Widget>[],
+                          : <Widget>[], // Empty widget if there is no discount
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

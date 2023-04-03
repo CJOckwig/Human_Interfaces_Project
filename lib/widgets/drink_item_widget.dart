@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import '../pages/drink_customize_page.dart';
 
@@ -41,6 +39,7 @@ class DrinkItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(5.0),
+      // OnTap passes the selected drink and attributes to Drink Customize Page
       child: GestureDetector(
         onTap: () {
           Navigator.pushNamed(
@@ -59,6 +58,7 @@ class DrinkItem extends StatelessWidget {
           color: Colors.white,
           child: Row(
             children: <Widget>[
+              // Displays a leading image for the drink
               Image(image: AssetImage(imagePath)),
               const SizedBox(
                 width: 10,
@@ -71,25 +71,28 @@ class DrinkItem extends StatelessWidget {
                       flex: 2,
                       child: Row(
                         children: [
+                          // Displays the name of the drink
                           Text(
                             name,
                             style: TextStyle(
                                 color: Theme.of(context).colorScheme.secondary,
                                 fontSize: 24.0),
                           ),
-                          Spacer(),
+                          const Spacer(),
+                          // Displays the range of prices from Small to Large
                           Text(
                             '\$${smallPrice.toStringAsFixed(2)} - \$${largePrice.toStringAsFixed(2)}',
                             style: TextStyle(
                                 color: Theme.of(context).colorScheme.secondary),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           )
                         ],
                       )),
                   Expanded(
                     flex: 3,
+                    // Displays a description of the drink
                     child: Text(
                       description,
                       style: TextStyle(

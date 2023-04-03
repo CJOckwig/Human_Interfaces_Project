@@ -13,6 +13,7 @@ class DrinkSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          // Home button returns to the Drink Selection Page
           leading: IconButton(
             icon: const Icon(
               Icons.home,
@@ -22,7 +23,9 @@ class DrinkSelectionPage extends StatelessWidget {
               DrinkSelectionPage.routeName,
             ),
           ),
+          // Title for each page
           title: const Text('Antelope Coffee'),
+          // Cart button navigates to the Cart from any page
           actions: <Widget>[
             IconButton(
               icon: const Icon(
@@ -37,6 +40,7 @@ class DrinkSelectionPage extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
+            // Card displays the requirements for a discount to be applied
             Card(
                 margin: const EdgeInsets.symmetric(
                   horizontal: 15.0,
@@ -66,6 +70,7 @@ class DrinkSelectionPage extends StatelessWidget {
                     ),
                   ],
                 )),
+            // GridView shows all available drinks
             Expanded(
               child: GridView.builder(
                 padding: const EdgeInsets.all(16.0),

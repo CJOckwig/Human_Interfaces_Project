@@ -10,6 +10,7 @@ class Drinks with ChangeNotifier {
     return [..._drinks];
   }
 
+  // Deprecated, but could be used for features in the future
   Drink findById(String drinkId) {
     return _drinks.firstWhere((drink) => drink.drinkId == drinkId);
   }

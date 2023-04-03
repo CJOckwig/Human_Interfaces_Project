@@ -1,5 +1,5 @@
 //CJOckwig Customer info page
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_state/widgets/cust_info_widget.dart';
