@@ -1,3 +1,5 @@
+// CartItem class with fields needed for cart_page display
+
 class CartItem {
   final String cartId;
   final String name;

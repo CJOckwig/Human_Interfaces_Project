@@ -21,7 +21,7 @@ class CartItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // remove item from cart
+    // Remove item from cart by swiping left
     return Dismissible(
       key: ValueKey(cartId),
       direction: DismissDirection.endToStart,
@@ -52,12 +52,16 @@ class CartItemWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: ListTile(
+            // isThreeLine allows the subtitle to display a longer description
             isThreeLine: true,
+            // Title displays the name of the drink
             title: Text(
               name,
               style: const TextStyle(fontSize: 20),
             ),
+            // Subtitle displays customizations such as size, milk, decaf, etc.
             subtitle: Text(addons),
+            // Trailing column displays the price and quantity
             trailing: Column(
               children: [
                 Text(
