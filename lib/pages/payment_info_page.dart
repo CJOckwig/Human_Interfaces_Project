@@ -77,7 +77,7 @@ class PaymentInfoPage extends StatelessWidget {
                       decoration:
                           const InputDecoration(labelText: 'Address Line 2'),
                       textInputAction: TextInputAction.done,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.streetAddress,
                     )),
                 Padding(
                     padding: const EdgeInsets.all(15.0),
